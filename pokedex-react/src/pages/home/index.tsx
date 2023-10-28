@@ -1,10 +1,13 @@
 import Title from "../../components/ui/typography/title"
+import Filters from "./components/filter-pokemons"
+import * as S from "./styles"
 
 const Home = () => {
   return (
-    <div>
+    <S.Container>
       <Title>Pokémons</Title>
-    </div>
+      <Filters />
+    </S.Container>
   )
 }
 
