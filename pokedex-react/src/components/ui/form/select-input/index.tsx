@@ -6,7 +6,6 @@ const SelectInput = ({ label, placeholder, options }: any) => {
   const [open, setOpen] = useState(false)
 
   const selectitem = (item: any) => {
-    console.log(item)
     setValue(item)
     setOpen(!open)
   }
