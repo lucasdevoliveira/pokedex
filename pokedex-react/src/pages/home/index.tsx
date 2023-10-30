@@ -3,12 +3,13 @@ import Title from "../../components/ui/typography/title"
 import Filters from "./components/filter-pokemons"
 import PokemonList from "./components/pokemon-list"
 import { useDispatch, useSelector } from "react-redux"
+import { ThunkDispatch } from "@reduxjs/toolkit"
 import { getAllPokemons, setTypeOnFilter } from "../../store/slices/pokemons"
 import ChipsInput from "../../components/ui/form/chips-inputs"
 import * as S from "./styles"
 
 const Home = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
   const pokemons = useSelector((state: any) => state.pokemons)
 
   const getResultPokemons = () => {

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
-export const getAllPokemons = createAsyncThunk('pokemons/getAllPokemons', async () => {
+export const getAllPokemons = createAsyncThunk<any>('pokemons/getAllPokemons', async () => {
   const response = await fetch('https://unpkg.com/pokemons@1.1.0/pokemons.json');
 	const { results } = await response.json();
   const types = results.flatMap((item: any) => item.type).filter((item: any, index: any, self: any) => self.indexOf(item) === index);
@@ -38,7 +38,7 @@ export const PokemonSlice = createSlice({
     isLoading: false
   },
   reducers: {
-    getResultFilter: (state) => {
+    getResultFilter: (state: any) => {
       let result: any = []
       result = state.data.filter((item: any) => item.name.toLowerCase().includes(state.filter.name))
       if (state.filter.order) {
@@ -53,7 +53,7 @@ export const PokemonSlice = createSlice({
         if (item.selected) {
           return item.label
         }
-      }).filter((type) => type)
+      }).filter((type: any) => type)
 
       if (typesSelecteds.length) {
         result = result.filter((item: any) => {
