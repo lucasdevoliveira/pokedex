@@ -1,8 +1,8 @@
 import * as S from "./styles"
 
-const TextInput = ({ label, placeholder, onChange }: any) => {
+const TextInput = ({ label, placeholder, onChange, className }: any) => {
   return (
-    <S.Container>
+    <S.Container className={className}>
       <S.Label>{label}</S.Label>
       <S.Input placeholder={placeholder} onChange={onChange}/>
     </S.Container>

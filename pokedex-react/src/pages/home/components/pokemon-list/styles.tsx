@@ -6,6 +6,11 @@ export const Container = styled.div`
   flex-wrap: wrap;
   gap: 16px;
   margin: 24px 0 0 0;
+  @media (min-width: 1025px) {
+    overflow-x: scroll;
+    height: calc(100vh - 245px);
+  }
+
 `
 
 export const Pokemon = styled.div`
@@ -14,9 +19,21 @@ export const Pokemon = styled.div`
   padding: 16px;
   display: flex;
   flex-direction: column;
-  width: 128px;
-  flex-grow: 1;
+  width: 136px;
   overflow: hidden;
+  height: 205px;
+  @media (min-width: 375px) {
+    width: 163px;
+  }
+  @media (min-width: 425px) {
+    width: 188px;
+  }
+  @media (min-width: 768px) {
+    width: 172px;
+  }
+  @media (min-width: 1024px) {
+    width: 177px;
+  }
   > .image {
     display: flex;
     justify-content: center;

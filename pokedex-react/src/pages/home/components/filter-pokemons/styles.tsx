@@ -5,4 +5,18 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  @media (min-width: 1025px) {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    .button {
+      display: none;
+    }
+    .name-input {
+      width: 586px;
+    }
+    .order-input {
+      width: 405px;
+    }
+  }
 `

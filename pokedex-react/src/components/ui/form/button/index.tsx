@@ -1,8 +1,8 @@
 import * as S from "./styles"
 
-const Button = ({ children, onClick }: any) => {
+const Button = ({ children, onClick, className }: any) => {
   return (
-    <S.Button onClick={() => onClick()}>{children}</S.Button>
+    <S.Button className={className} onClick={() => onClick()}>{children}</S.Button>
   )
 }
 

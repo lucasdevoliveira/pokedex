@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import * as S from "./styles"
 import Modal from "../../../../components/ui/modal"
 import Title from "../../../../components/ui/typography/title"

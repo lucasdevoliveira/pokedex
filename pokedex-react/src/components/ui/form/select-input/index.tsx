@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import * as S from "./styles"
 
-const SelectInput = ({ label, placeholder, options, onChange, value }: any) => {
+const SelectInput = ({ label, placeholder, options, onChange, value, className }: any) => {
   const [valueDefault, setValueDefault] = useState<any>(null)
   const [open, setOpen] = useState(false)
 
@@ -17,7 +17,7 @@ const SelectInput = ({ label, placeholder, options, onChange, value }: any) => {
   }, [value])
 
   return (
-    <S.Container>
+    <S.Container className={className}>
       <S.Label>{label}</S.Label>
       <S.Input onClick={() => setOpen(!open)}>
         <p className="value">
