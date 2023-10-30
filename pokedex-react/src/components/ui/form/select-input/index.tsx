@@ -1,22 +1,28 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import * as S from "./styles"
 
-const SelectInput = ({ label, placeholder, options }: any) => {
-  const [value, setValue] = useState<any>(null)
+const SelectInput = ({ label, placeholder, options, onChange, value }: any) => {
+  const [valueDefault, setValueDefault] = useState<any>(null)
   const [open, setOpen] = useState(false)
 
   const selectitem = (item: any) => {
-    setValue(item)
+    setValueDefault(item)
     setOpen(!open)
+    onChange(item)
   }
+
+  useEffect(() => {
+    console.log(value)
+    setValueDefault(value)
+  }, [value])
 
   return (
     <S.Container>
       <S.Label>{label}</S.Label>
       <S.Input onClick={() => setOpen(!open)}>
-        <p>
-          { value?.value
-            ? value?.value
+        <p className="value">
+          { valueDefault?.value
+            ? valueDefault?.label
             : placeholder 
           }
         </p>

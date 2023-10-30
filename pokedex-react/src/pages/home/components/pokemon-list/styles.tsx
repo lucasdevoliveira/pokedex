@@ -9,6 +9,7 @@ export const Container = styled.div`
 `
 
 export const Pokemon = styled.div`
+  border-radius: 4px;
   border: 1px solid var(--color-light-gray);
   padding: 16px;
   display: flex;

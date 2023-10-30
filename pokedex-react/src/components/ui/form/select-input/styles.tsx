@@ -18,7 +18,7 @@ export const Input = styled.div`
   background: var(--color-light-gray);
   padding: 0 16px;
   height: 44px;
-  color: var(--color-dark-gray)
+  color: var(--color-dark-gray);
   display: flex;
   font-size: 14px;
   align-items: center;

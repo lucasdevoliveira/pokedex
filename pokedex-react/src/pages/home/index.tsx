@@ -10,6 +10,10 @@ const Home = () => {
   const dispatch = useDispatch()
   const pokemons = useSelector((state: any) => state.pokemons)
 
+  const getResultPokemons = () => {
+    return pokemons.filter.result.length ? pokemons.filter.result : pokemons.data
+  }
+
   useEffect(() => {
     dispatch(getAllPokemons())
   }, [])
@@ -18,7 +22,7 @@ const Home = () => {
     <S.Container>
       <Title>Pokémons</Title>
       <Filters />
-      <PokemonList pokemons={pokemons.data} />
+      <PokemonList pokemons={getResultPokemons()} />
     </S.Container>
   )
 }

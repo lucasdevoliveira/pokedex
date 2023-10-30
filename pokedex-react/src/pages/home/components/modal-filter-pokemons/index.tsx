@@ -1,41 +1,34 @@
+import { useEffect, useState } from "react"
 import * as S from "./styles"
 import Modal from "../../../../components/ui/modal"
 import Title from "../../../../components/ui/typography/title"
-import TextInput from "../../../../components/ui/form/text-input"
 import ToggleInput from "../../../../components/ui/form/toggle-input"
 import SelectInput from "../../../../components/ui/form/select-input"
+import ChipsInput from "../../../../components/ui/form/chips-inputs"
+import { useDispatch, useSelector } from "react-redux"
+import { setOrderOnFilter, setFavoritesOnFilter, setTypeOnFilter } from "../../../../store/slices/pokemons"
+import Button from "../../../../components/ui/form/button"
 
-const ModalFilterPokemons = ({ open = false, onClose }: any) => {
+const ModalFilterPokemons = ({ open = false, onClose, onFilter }: any) => {
+  const dispatch = useDispatch()
+  const pokemons = useSelector((state: any) => state.pokemons)
+
   const options = [
     {
-      label: 'opções 1',
-      value: 'opções 1'
+      label: 'Menor número',
+      value: 'menor-numero'
     },
     {
-      label: 'opções 2',
-      value: 'opções 2'
+      label: 'Maior número',
+      value: 'maior-numero'
     },
-    {
-      label: 'opções 3',
-      value: 'opções 3'
-    },
-    {
-      label: 'opções 4',
-      value: 'opções 4'
-    },
-    {
-      label: 'opções 2',
-      value: 'opções 2'
-    },
-    {
-      label: 'opções 3',
-      value: 'opções 3'
-    },
-    {
-      label: 'opções 4',
-      value: 'opções 4'
-    }
   ]
+
+  const filter = () => {
+    onFilter()
+    onClose()
+  }
+
   return (
     <>
       { open 
@@ -45,14 +38,37 @@ const ModalFilterPokemons = ({ open = false, onClose }: any) => {
               <S.Content>
                 <Title>Filtrar por:</Title>
                 <S.Inputs>
-                  {/* <TextInput label="Ordens" placeholder="Selecione uma opção" /> */}
                   <SelectInput 
                     label="Ordens" 
                     placeholder="Selecione uma opção" 
                     options={options}
+                    value={pokemons.filter.order}
+                    onChange={(value: string) => dispatch(setOrderOnFilter(value))}
                   />
-                  <ToggleInput label="Favoritos" />
+                  <ToggleInput 
+                    label="Favoritos" 
+                    onChange={(status: boolean) => dispatch(setFavoritesOnFilter(status))}
+                  />
+                  <ChipsInput 
+                    label="Tipos" 
+                    data={pokemons.filter.type}
+                    onChange={(item: any) => {
+                      let result = []
+                      result = [...pokemons.filter.type]
+                      const resultComputed = result.map((type: any) => {
+                        if (type.label === item.label) {
+                          return {
+                            label: item.label,
+                            selected: item.selected
+                          }
+                        }
+                        return type
+                      })
+                      dispatch(setTypeOnFilter(resultComputed))
+                    }}
+                  />
                 </S.Inputs>
+                <Button onClick={() => filter()}>Filtrar</Button>
               </S.Content>
             </Modal>
           </S.Container> 

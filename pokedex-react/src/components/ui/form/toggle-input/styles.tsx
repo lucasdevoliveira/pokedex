@@ -24,6 +24,7 @@ export const Input = styled.div`
 export const Options = styled.div<any>`
   padding: 8px;
   width: 100%;
+  font-size: 14px;
   text-align: center;
   background: var(${(props) => props.enabled ? '--color-green' : 'transparent'});
   border-radius: 4px;
